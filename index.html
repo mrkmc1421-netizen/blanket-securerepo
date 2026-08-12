@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BlanketSecure.</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #071329;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 430px;
+      min-height: 100vh;
+      padding: 28px 22px;
+      background:
+        radial-gradient(circle at 50% 20%, #18396d 0%, #071329 45%);
+    }
+
+    .header {
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    .shield {
+      width: 110px;
+      height: 110px;
+      margin: auto;
+      border-radius: 50%;
+      background: #183d73;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 55px;
+      box-shadow: 0 0 35px rgba(80, 170, 255, 0.35);
+    }
+
+    h1 {
+      margin: 22px 0 8px;
+      font-size: 34px;
+    }
+
+    .subtitle {
+      color: #b8c8e6;
+      font-size: 16px;
+    }
+
+    .status-card {
+      margin-top: 35px;
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+    }
+
+    .status {
+      font-size: 20px;
+      font-weight: bold;
+      color: #72e6a2;
+    }
+
+    .status-text {
+      margin-top: 8px;
+      color: #b8c8e6;
+    }
+
+    .activate {
+      width: 100%;
+      margin-top: 25px;
+      padding: 18px;
+      border: none;
+      border-radius: 18px;
+      background: #4d8cff;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(77,140,255,0.3);
+    }
+
+    .activate:active {
+      transform: scale(0.98);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .feature {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.07);
+      text-align: center;
+      color: #d9e5ff;
+    }
+
+    .feature-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .active {
+      background: #173f2c;
+      color: #8affb6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="app">
+
+    <section class="header">
+      <div class="shield">🛡️</div>
+
+      <h1>BlanketSecure</h1>
+
+      <p class="subtitle">
+        Your blanket. Your fortress.
+      </p>
+    </section>
+
+    <section class="status-card">
+      <div class="status" id="status">
+        🟢 Protection READY
+      </div>
+
+      <div class="status-text" id="statusText">
+        Your room is protected from imaginary nighttime monsters.
+      </div>
+
+      <button class="activate" id="activateButton">
+        ACTIVATE BLANKET SHIELD
+      </button>
+    </section>
+
+    <section class="features">
+
+      <div class="feature" id="monsterSensor">
+        <div class="feature-icon">👾</div>
+        Monster Sensor
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">🌙</div>
+        Night Mode
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">🛏️</div>
+        Bed Shield
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">🔔</div>
+        Safe Alarm
+      </div>
+
+    </section>
+
+  </main>
+
+  <script>
+    const button = document.getElementById("activateButton");
+    const status = document.getElementById("status");
+    const statusText = document.getElementById("statusText");
+    const sensor = document.getElementById("monsterSensor");
+
+    let protectionActive = false;
+
+    button.addEventListener("click", () => {
+
+      protectionActive = !protectionActive;
+
+      if (protectionActive) {
+
+        status.textContent = "🛡️ Protection ACTIVE";
+        status.style.color = "#72e6a2";
+
+        statusText.textContent =
+          "Blanket shield activated. Monsters are officially not invited.";
+
+        button.textContent = "DEACTIVATE BLANKET SHIELD";
+
+        sensor.classList.add("active");
+        sensor.innerHTML =
+          '<div class="feature-icon">🛡️</div>Monster Sensor ACTIVE';
+
+      } else {
+
+        status.textContent = "🟢 Protection READY";
+
+        statusText.textContent =
+          "Your room is protected from imaginary nighttime monsters.";
+
+        button.textContent = "ACTIVATE BLANKET SHIELD";
+
+        sensor.classList.remove("active");
+        sensor.innerHTML =
+          '<div class="feature-icon">👾</div>Monster Sensor';
+      }
+
+    });
+  </script>
+
+</body>
+</html>
